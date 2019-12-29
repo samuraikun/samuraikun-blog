@@ -13,11 +13,12 @@ const Blog: NextPage<BlogI> = ({ title, body, tags }) => {
     <div>
       <h1>{title}</h1>
       <div>
-        {tags.map(tag => (
-          <React.Fragment key={tag.id}>
-            <span>{tag.name}</span>
-          </React.Fragment>
-        ))}
+        {tags &&
+          tags.map(tag => (
+            <React.Fragment key={tag.id}>
+              <span>{tag.name}</span>
+            </React.Fragment>
+          ))}
       </div>
       <div dangerouslySetInnerHTML={{ __html: `${body}` }}></div>
     </div>
