@@ -1,33 +1,40 @@
 import React from "react";
 import axios from "axios";
 import { NextPage } from "next";
-import Link from "next/link";
+import Head from "next/head";
+
 import { BlogsI } from "~/types";
+
 import SingleColumn from "~/components/templates/SingleColumn";
+import CardLayout from "~/components/templates/CardsLayout";
+import ArticleCard from "~/components/organisms/ArticleCard";
 
 const Page: NextPage<BlogsI> = props => {
   return (
-    <SingleColumn
-      renderHeader={(): JSX.Element => <h2>最新の記事</h2>}
-      renderMain={(): JSX.Element => (
-        <div>
-          {props.contents.map(blog => (
-            <React.Fragment key={blog.id}>
-              <Link href={`blogs/${blog.id}`}>
-                <a>
-                  <h2>{blog.title}</h2>
-                </a>
-              </Link>
-              {blog.tags.map(tag => (
-                <React.Fragment key={tag.id}>
-                  <span>{tag.name}</span>
-                </React.Fragment>
-              ))}
-            </React.Fragment>
-          ))}
-        </div>
-      )}
-    />
+    <div>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+      </Head>
+      <style jsx global>{`
+        body {
+          background: #f2f2f2;
+          margin: 0;
+        }
+      `}</style>
+      <SingleColumn
+        renderHeader={(): JSX.Element => <h2>My Blog</h2>}
+        renderMain={(): JSX.Element => (
+          <CardLayout
+            renderCards={(): Array<JSX.Element> => {
+              return props.contents.map(blog => (
+                <ArticleCard blog={blog} key={blog.id} />
+              ));
+            }}
+          />
+        )}
+      />
+    </div>
   );
 };
 

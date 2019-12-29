@@ -20,15 +20,16 @@ const TSingleColumn = styled.div`
     "header header header" 50px
     "   .      .      .  " 70px
     "   .     main    .  " 1fr
-    "   .      .      .  " 80px
-    / 40px 1fr 40px;
+    "   .      .      .  " minmax(80px, auto)
+    / 100px 1fr 100px;
+  height: 100vh;
 
   ${media.lessThan("medium")`
     grid-template:
       'header header header' 50px
       '   .      .      .  ' 60px
       '   .     main    .  ' 1fr
-      '   .      .      .  ' 50px
+      '   .      .      .  ' minmax(50px, auto)
       / 30px 1fr 30px;
   `}
 `;

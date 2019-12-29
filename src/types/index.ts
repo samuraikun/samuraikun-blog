@@ -4,7 +4,7 @@ export interface BlogI {
   updatedAt: string;
   title: string;
   body: string;
-  tags: Array<TagI>;
+  tags?: Array<TagI> | null;
 }
 
 export interface BlogsI {
