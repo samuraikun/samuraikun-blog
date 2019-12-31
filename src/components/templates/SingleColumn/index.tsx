@@ -44,8 +44,6 @@ const TSingleColumnHeader = styled.div`
 
 const TSingleColumnMain = styled.div`
   grid-area: main;
-  display: flex;
-  justify-content: center;
 `;
 
 export default SingleColumn;

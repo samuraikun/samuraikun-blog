@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MarkdownIt from "markdown-it";
+import styled from "styled-components";
 import { NextPage } from "next";
 import { ArticleI } from "~/types";
 import SingleColumn from "~/components/templates/SingleColumn";
@@ -10,12 +11,13 @@ const md = new MarkdownIt({
   html: true
 });
 
-const Blog: NextPage<ArticleI> = ({ title, body, tags }) => {
+const Blog: NextPage<ArticleI> = ({ thumbnail, title, body, tags }) => {
   return (
     <SingleColumn
       renderHeader={(): JSX.Element => <AppHeader />}
       renderMain={(): JSX.Element => (
-        <div>
+        <MainContainer>
+          <img src={thumbnail.url} />
           <h1>{title}</h1>
           <div>
             {tags &&
@@ -26,7 +28,7 @@ const Blog: NextPage<ArticleI> = ({ title, body, tags }) => {
               ))}
           </div>
           <div dangerouslySetInnerHTML={{ __html: `${body}` }}></div>
-        </div>
+        </MainContainer>
       )}
     />
   );
@@ -47,5 +49,12 @@ Blog.getInitialProps = async context => {
 
   return blog;
 };
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+`;
 
 export default Blog;
