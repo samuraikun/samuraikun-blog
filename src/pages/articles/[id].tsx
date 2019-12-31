@@ -17,17 +17,17 @@ const Blog: NextPage<ArticleI> = ({ thumbnail, title, body, tags }) => {
       renderHeader={(): JSX.Element => <AppHeader />}
       renderMain={(): JSX.Element => (
         <MainContainer>
-          <img src={thumbnail.url} />
+          <ThumbnailImage src={thumbnail.url} />
           <h1>{title}</h1>
-          <div>
+          <TagsContainer>
             {tags &&
               tags.map(tag => (
                 <React.Fragment key={tag.id}>
-                  <span>{tag.name}</span>
+                  <Tag>{tag.name}</Tag>
                 </React.Fragment>
               ))}
-          </div>
-          <div dangerouslySetInnerHTML={{ __html: `${body}` }}></div>
+          </TagsContainer>
+          <ContentContainer dangerouslySetInnerHTML={{ __html: `${body}` }} />
         </MainContainer>
       )}
     />
@@ -55,6 +55,26 @@ const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
+`;
+
+const ThumbnailImage = styled.img`
+  object-fit: contain;
+`;
+
+const ContentContainer = styled.div``;
+const TagsContainer = styled.div``;
+const Tag = styled.span`
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 13px;
+  color: #111111;
+  user-select: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
 `;
 
 export default Blog;
