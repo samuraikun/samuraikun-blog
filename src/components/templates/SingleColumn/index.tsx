@@ -17,8 +17,8 @@ const SingleColumn: FC<SingleColumnI> = ({ renderHeader, renderMain }) => (
 const TSingleColumn = styled.div`
   display: grid;
   grid-template:
-    "header header header" 50px
-    "   .      .      .  " 70px
+    "header header header" 100px
+    "   .      .      .  " 20px
     "   .     main    .  " 1fr
     "   .      .      .  " minmax(80px, auto)
     / 100px 1fr 100px;
@@ -37,7 +37,9 @@ const TSingleColumn = styled.div`
 const TSingleColumnHeader = styled.div`
   box-sizing: border-box;
   grid-area: header;
-  border-bottom: 1px solid #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const TSingleColumnMain = styled.div`

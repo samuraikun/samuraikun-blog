@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
+import styled from "styled-components";
 
 import { BlogsI } from "~/types";
 
@@ -15,15 +17,35 @@ const Page: NextPage<BlogsI> = props => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
+        <title>{"Samuraikun's trace log"}</title>
+        <link
+          href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+          rel="stylesheet"
+        />
+        <link rel="shortcut icon" href="/public/favicon.ico" />
       </Head>
       <style jsx global>{`
+        html,
+        body,
+        pre,
+        code,
+        kbd,
+        samp {
+          font-family: -apple-system, BlinkMacSystemFont, Roboto, "游ゴシック体",
+            YuGothic, "Yu Gothic Medium", sans-serif;
+          font-feature-settings: "pkna" 1;
+        }
         body {
           background: #f2f2f2;
           margin: 0;
         }
       `}</style>
       <SingleColumn
-        renderHeader={(): JSX.Element => <h2>My Blog</h2>}
+        renderHeader={(): JSX.Element => (
+          <Link href={"/"}>
+            <HeaderItem>{"Samuraikun's trace log"}</HeaderItem>
+          </Link>
+        )}
         renderMain={(): JSX.Element => (
           <CardLayout
             renderCards={(): Array<JSX.Element> => {
@@ -49,5 +71,14 @@ Page.getInitialProps = async (): Promise<BlogsI> => {
   const data = await res.data;
   return data;
 };
+
+const HeaderItem = styled.a`
+  font-size: 24px;
+  font-family: "Press Start 2P";
+  text-decoration: none;
+  color: #111111;
+  font-weight: bold;
+  cursor: pointer;
+`;
 
 export default Page;
