@@ -2,13 +2,13 @@ import React from "react";
 import axios from "axios";
 import MarkdownIt from "markdown-it";
 import { NextPage } from "next";
-import { BlogI } from "~/types";
+import { ArticleI } from "~/types";
 
 const md = new MarkdownIt({
   html: true
 });
 
-const Blog: NextPage<BlogI> = ({ title, body, tags }) => {
+const Blog: NextPage<ArticleI> = ({ title, body, tags }) => {
   return (
     <div>
       <h1>{title}</h1>
@@ -33,7 +33,7 @@ Blog.getInitialProps = async context => {
   };
 
   const res = await axios.get(
-    `https://samuraikun.microcms.io/api/v1/blogs/${id}`,
+    `https://samuraikun.microcms.io/api/v1/articles/${id}`,
     key
   );
   const blog = res.data;

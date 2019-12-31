@@ -2,27 +2,27 @@ import { FC, Fragment } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import Card from "~/components/atoms/Card";
-import { BlogI } from "~/types";
+import { ArticleI } from "~/types";
 
 interface ArticleCardI {
-  blog: BlogI;
+  article: ArticleI;
 }
 
-const ArticleCard: FC<ArticleCardI> = ({ blog }) => (
+const ArticleCard: FC<ArticleCardI> = ({ article }) => (
   <Card
     renderContent={(): JSX.Element => (
       <Fragment>
         <OArticleCardHeader>
-          <Link href={`blogs/${blog.id}`}>
+          <Link href={`articles/${article.id}`}>
             <a>
-              <h3>{blog.title}</h3>
+              <h3>{article.title}</h3>
             </a>
           </Link>
         </OArticleCardHeader>
         <OArticleCardBody>This is test.</OArticleCardBody>
         <OArticleCardFooter>
-          {blog.tags &&
-            blog.tags.map(tag => (
+          {article.tags &&
+            article.tags.map(tag => (
               <Fragment key={tag.id}>
                 <span>{tag.name}</span>
               </Fragment>

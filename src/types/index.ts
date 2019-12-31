@@ -1,4 +1,4 @@
-export interface BlogI {
+export interface ArticleI {
   id: string;
   createdAt: string;
   updatedAt: string;
@@ -7,8 +7,8 @@ export interface BlogI {
   tags?: Array<TagI> | null;
 }
 
-export interface BlogsI {
-  contents: Array<BlogI>;
+export interface ArticlesI {
+  contents: Array<ArticleI>;
 }
 
 export interface TagI {

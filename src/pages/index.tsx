@@ -5,13 +5,13 @@ import Head from "next/head";
 import Link from "next/link";
 import styled from "styled-components";
 
-import { BlogsI } from "~/types";
+import { ArticlesI } from "~/types";
 
 import SingleColumn from "~/components/templates/SingleColumn";
 import CardLayout from "~/components/templates/CardsLayout";
 import ArticleCard from "~/components/organisms/ArticleCard";
 
-const Page: NextPage<BlogsI> = props => {
+const Page: NextPage<ArticlesI> = props => {
   return (
     <div>
       <Head>
@@ -49,8 +49,8 @@ const Page: NextPage<BlogsI> = props => {
         renderMain={(): JSX.Element => (
           <CardLayout
             renderCards={(): Array<JSX.Element> => {
-              return props.contents.map(blog => (
-                <ArticleCard blog={blog} key={blog.id} />
+              return props.contents.map(article => (
+                <ArticleCard article={article} key={article.id} />
               ));
             }}
           />
@@ -60,12 +60,12 @@ const Page: NextPage<BlogsI> = props => {
   );
 };
 
-Page.getInitialProps = async (): Promise<BlogsI> => {
+Page.getInitialProps = async (): Promise<ArticlesI> => {
   const key = {
     headers: { "X-API-KEY": process.env.API_KEY }
   };
   const res = await axios.get(
-    `https://samuraikun.microcms.io/api/v1/blogs`,
+    `https://samuraikun.microcms.io/api/v1/articles`,
     key
   );
   const data = await res.data;
