@@ -12,14 +12,14 @@ const ArticleCard: FC<ArticleCardI> = ({ article }) => (
   <Card
     renderContent={(): JSX.Element => (
       <Fragment>
-        <OArticleCardHeader>
+        <OArticleCardHeader></OArticleCardHeader>
+        <OArticleCardBody>
           <Link href={`articles/${article.id}`}>
             <a>
               <h3>{article.title}</h3>
             </a>
           </Link>
-        </OArticleCardHeader>
-        <OArticleCardBody>This is test.</OArticleCardBody>
+        </OArticleCardBody>
         <OArticleCardFooter>
           {article.tags &&
             article.tags.map(tag => (

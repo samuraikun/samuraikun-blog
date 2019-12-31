@@ -4,11 +4,17 @@ export interface ArticleI {
   updatedAt: string;
   title: string;
   body: string;
+  thumbnail: {
+    url: string;
+  };
   tags?: Array<TagI> | null;
 }
 
 export interface ArticlesI {
   contents: Array<ArticleI>;
+  totalCount: number;
+  offset: number;
+  limit: number;
 }
 
 export interface TagI {

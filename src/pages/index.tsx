@@ -2,14 +2,13 @@ import React from "react";
 import axios from "axios";
 import { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import styled from "styled-components";
 
 import { ArticlesI } from "~/types";
 
 import SingleColumn from "~/components/templates/SingleColumn";
 import CardLayout from "~/components/templates/CardsLayout";
 import ArticleCard from "~/components/organisms/ArticleCard";
+import AppHeader from "~/components/molecules/AppHeader";
 
 const Page: NextPage<ArticlesI> = props => {
   return (
@@ -41,11 +40,7 @@ const Page: NextPage<ArticlesI> = props => {
         }
       `}</style>
       <SingleColumn
-        renderHeader={(): JSX.Element => (
-          <Link href={"/"}>
-            <HeaderItem>{"Samuraikun's trace log"}</HeaderItem>
-          </Link>
-        )}
+        renderHeader={(): JSX.Element => <AppHeader />}
         renderMain={(): JSX.Element => (
           <CardLayout
             renderCards={(): Array<JSX.Element> => {
@@ -71,14 +66,5 @@ Page.getInitialProps = async (): Promise<ArticlesI> => {
   const data = await res.data;
   return data;
 };
-
-const HeaderItem = styled.a`
-  font-size: 24px;
-  font-family: "Press Start 2P";
-  text-decoration: none;
-  color: #111111;
-  font-weight: bold;
-  cursor: pointer;
-`;
 
 export default Page;
