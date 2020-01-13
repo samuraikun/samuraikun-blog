@@ -12,7 +12,9 @@ const ArticleCard: FC<ArticleCardI> = ({ article }) => (
   <Card
     renderContent={(): JSX.Element => (
       <Fragment>
-        <OArticleCardHeader></OArticleCardHeader>
+        <OArticleCardHeader>
+          <OArticleCardThumbnail src={article.thumbnail.url} />
+        </OArticleCardHeader>
         <OArticleCardBody>
           <Link href={`articles/${article.id}`}>
             <a>
@@ -21,6 +23,7 @@ const ArticleCard: FC<ArticleCardI> = ({ article }) => (
           </Link>
         </OArticleCardBody>
         <OArticleCardFooter>
+          <p>{article.createdAt}</p>
           {article.tags &&
             article.tags.map(tag => (
               <Fragment key={tag.id}>
@@ -35,8 +38,19 @@ const ArticleCard: FC<ArticleCardI> = ({ article }) => (
 
 const OArticleCardHeader = styled.div``;
 
-const OArticleCardBody = styled.div``;
+const OArticleCardBody = styled.div`
+  padding: 5px;
+`;
 
-const OArticleCardFooter = styled.div``;
+const OArticleCardFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+`;
+
+const OArticleCardThumbnail = styled.img`
+  object-fit: contain;
+  width: 100%;
+`;
 
 export default ArticleCard;

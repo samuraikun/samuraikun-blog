@@ -14,7 +14,7 @@ const TCardsLayout = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-content: space-around;
+  align-content: space-between;
   height: 100%;
   &::after {
     content: "";

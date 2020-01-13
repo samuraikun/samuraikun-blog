@@ -59,6 +59,7 @@ const MainContainer = styled.div`
 
 const ThumbnailImage = styled.img`
   object-fit: contain;
+  width: 80%;
 `;
 
 const ContentContainer = styled.div``;
