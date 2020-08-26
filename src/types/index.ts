@@ -1,14 +1,20 @@
-export interface BlogI {
+export interface ArticleI {
   id: string;
   createdAt: string;
   updatedAt: string;
   title: string;
   body: string;
-  tags: Array<TagI>;
+  thumbnail: {
+    url: string;
+  };
+  tags?: Array<TagI> | null;
 }
 
-export interface BlogsI {
-  contents: Array<BlogI>;
+export interface ArticlesI {
+  contents: Array<ArticleI>;
+  totalCount: number;
+  offset: number;
+  limit: number;
 }
 
 export interface TagI {

@@ -26,14 +26,14 @@ module.exports = {
       headers: { "X-API-KEY": process.env.API_KEY }
     };
     const res = await axios.get(
-      `https://samuraikun.microcms.io/api/v1/blogs`,
+      `https://samuraikun.microcms.io/api/v1/articles`,
       key
     );
     const data = await res.data.contents;
 
     data.forEach(blog => {
-      paths[`/blogs/${blog.id}`] = {
-        page: "/blogs/[id]",
+      paths[`/articles/${blog.id}`] = {
+        page: "/articles/[id]",
         query: { id: blog.id }
       };
     });
