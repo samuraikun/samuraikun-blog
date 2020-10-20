@@ -10,7 +10,7 @@ import CardLayout from "~/components/templates/CardsLayout";
 import ArticleCard from "~/components/organisms/ArticleCard";
 import AppHeader from "~/components/molecules/AppHeader";
 
-const Page: NextPage<ArticlesI> = props => {
+const Page: NextPage<ArticlesI> = (props) => {
   return (
     <div>
       <Head>
@@ -44,7 +44,7 @@ const Page: NextPage<ArticlesI> = props => {
         renderMain={(): JSX.Element => (
           <CardLayout
             renderCards={(): Array<JSX.Element> => {
-              return props.contents.map(article => (
+              return props.contents.map((article) => (
                 <ArticleCard article={article} key={article.id} />
               ));
             }}
@@ -57,13 +57,13 @@ const Page: NextPage<ArticlesI> = props => {
 
 Page.getInitialProps = async (): Promise<ArticlesI> => {
   const key = {
-    headers: { "X-API-KEY": process.env.API_KEY }
+    headers: { "X-API-KEY": process.env.API_KEY },
   };
   const res = await axios.get(
     `https://samuraikun.microcms.io/api/v1/articles`,
     key
   );
-  const data = await res.data;
+  const data = res.data;
   return data;
 };
 

@@ -13,7 +13,7 @@ const ArticleCard: FC<ArticleCardI> = ({ article }) => (
     renderContent={(): JSX.Element => (
       <Fragment>
         <OArticleCardHeader>
-          <OArticleCardThumbnail src={article.thumbnail.url} />
+          <OArticleCardThumbnail src={article?.thumbnail?.url} />
         </OArticleCardHeader>
         <OArticleCardBody>
           <Link href={`articles/${article.id}`}>
@@ -25,7 +25,7 @@ const ArticleCard: FC<ArticleCardI> = ({ article }) => (
         <OArticleCardFooter>
           <p>{article.createdAt}</p>
           {article.tags &&
-            article.tags.map(tag => (
+            article.tags.map((tag) => (
               <Fragment key={tag.id}>
                 <span>{tag.name}</span>
               </Fragment>

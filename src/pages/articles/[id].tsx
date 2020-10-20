@@ -8,7 +8,7 @@ import SingleColumn from "~/components/templates/SingleColumn";
 import AppHeader from "~/components/molecules/AppHeader";
 
 const md = new MarkdownIt({
-  html: true
+  html: true,
 });
 
 const Blog: NextPage<ArticleI> = ({ thumbnail, title, body, tags }) => {
@@ -17,11 +17,11 @@ const Blog: NextPage<ArticleI> = ({ thumbnail, title, body, tags }) => {
       renderHeader={(): JSX.Element => <AppHeader />}
       renderMain={(): JSX.Element => (
         <MainContainer>
-          <ThumbnailImage src={thumbnail.url} />
+          <ThumbnailImage src={thumbnail?.url} />
           <h1>{title}</h1>
           <TagsContainer>
             {tags &&
-              tags.map(tag => (
+              tags.map((tag) => (
                 <React.Fragment key={tag.id}>
                   <Tag>{tag.name}</Tag>
                 </React.Fragment>
@@ -34,11 +34,11 @@ const Blog: NextPage<ArticleI> = ({ thumbnail, title, body, tags }) => {
   );
 };
 
-Blog.getInitialProps = async context => {
+Blog.getInitialProps = async (context) => {
   const { id } = context.query;
 
   const key = {
-    headers: { "X-API-KEY": process.env.API_KEY }
+    headers: { "X-API-KEY": process.env.API_KEY },
   };
 
   const res = await axios.get(

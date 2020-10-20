@@ -4,8 +4,8 @@ export interface ArticleI {
   updatedAt: string;
   title: string;
   body: string;
-  thumbnail: {
-    url: string;
+  thumbnail?: {
+    url?: string;
   };
   tags?: Array<TagI> | null;
 }
